@@ -1,17 +1,24 @@
 import os
+import streamlit as st
 from groq import Groq
-from dotenv import load_dotenv
 from google import genai
-from google.genai import types
 
-load_dotenv()
+# Coba ambil API Key dari Streamlit Secrets, jika tidak ada baru ambil dari OS Environment
+try:
+    groq_api = st.secrets["GROQ_API_KEY"]
+    gemini_api = st.secrets["GEMINI_API_KEY"]
+except:
+    # Ini untuk jaga-jaga kalau dijalankan lokal tanpa file .streamlit/secrets.toml
+    from dotenv import load_dotenv
+    load_dotenv()
+    groq_api = os.getenv("GROQ_API_KEY")
+    gemini_api = os.getenv("GEMINI_API_KEY")
 
-# Inisialisasi client Groq
-client = Groq(api_key=os.getenv("GROQ_API_KEY"))
-
+# Inisialisasi client
+client = Groq(api_key=groq_api)
 gemini_client = genai.Client(
     http_options={"api_version": "v1beta"},
-    api_key=os.environ.get("GEMINI_API_KEY")
+    api_key=gemini_api
 )
 
 # Persona Ryro (Cold & Efficient)
