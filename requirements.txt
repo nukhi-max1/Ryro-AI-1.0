@@ -2,3 +2,4 @@ streamlit
 groq
 google-genai
 python-dotenv
+fpdf
