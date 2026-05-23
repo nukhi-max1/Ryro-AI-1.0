@@ -3,6 +3,11 @@ import streamlit as st
 from groq import Groq
 from google import genai
 
+if "GROQ_API_KEY" not in st.secrets:
+    st.error("Error: GROQ_API_KEY tidak ditemukan di Streamlit Secrets!")
+else:
+    st.success("Secrets terbaca!")
+
 # Coba ambil API Key dari Streamlit Secrets, jika tidak ada baru ambil dari OS Environment
 try:
     groq_api = st.secrets["GROQ_API_KEY"]
