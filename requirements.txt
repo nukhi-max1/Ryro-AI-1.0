@@ -5,3 +5,4 @@ python-dotenv
 fpdf
 google-generativeai
 Pillow
+pytz
