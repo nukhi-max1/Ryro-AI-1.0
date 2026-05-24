@@ -3,3 +3,5 @@ groq
 google-genai
 python-dotenv
 fpdf
+google-generativeai
+Pillow
