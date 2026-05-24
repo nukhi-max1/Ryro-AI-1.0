@@ -10,8 +10,8 @@ def set_ryro_theme():
                 
         /* Membuat background selectbox transparan/gelap */
         [data-testid="stSelectbox"] > div[data-baseweb="select"] > div {
-        background-color: rgba(255, 255, 255, 0.05) !important;
-        color: white !important;
+            background-color: rgba(255, 255, 255, 0.05) !important;
+            color: white !important;
         }
         
         /* Sembunyikan dekorasi pelangi */
@@ -24,31 +24,7 @@ def set_ryro_theme():
             background: transparent !important;
         }
 
-        /* 3. BAJAK TOMBOL SIDEBAR ASLI & PINDAHKAN KE BAWAH! */
-        /* Kita menggunakan tombol bawaan Streamlit, cuma pindah tempat */
-        [data-testid="collapsedControl"] {
-            position: fixed !important;
-            top: auto !important;          /* Matikan posisi atas */
-            left: auto !important;         /* Matikan posisi kiri */
-            bottom: 33px !important;       /* Sejajar dengan input chat */
-            right: 65px !important;        /* Di sebelah tombol panah kirim */
-            z-index: 999999 !important;
-            background-color: #161b22 !important;
-            border: 1px solid #30363d !important;
-            border-radius: 8px !important;
-            display: flex !important;      /* Pastikan tombol terlihat */
-            align-items: center !important;
-            justify-content: center !important;
-            transition: all 0.3s ease;
-        }
-
-        /* Efek Hover untuk tombol yang dibajak */
-        [data-testid="collapsedControl"]:hover {
-            background-color: #30363d !important;
-            border-color: #007bff !important;
-        }
-
-        /* 4. LOGO RYRO TETAP AMAN DI KANAN ATAS */
+        /* 3. LOGO RYRO TETAP AMAN DI KANAN ATAS */
         .ryro-logo {
             position: fixed;
             top: 15px;
@@ -93,7 +69,6 @@ def set_ryro_theme():
             border: none !important;
             outline: none !important;
             box-shadow: none !important;
-            padding-right: 120px !important; /* Ruang biar teks ga nabrak tombol */
         }
         .stChatInput > div {
             border-color: #30363d !important;
@@ -160,7 +135,7 @@ def set_ryro_theme():
             border: 1px solid rgba(0, 123, 255, 0.5) !important;
         }
                 
-        /* Tambahkan di st.markdown css lo */
+        /* Styling tombol download */
         .stDownloadButton button {
             background: rgba(0, 123, 255, 0.2) !important;
             backdrop-filter: blur(10px) !important;
@@ -171,7 +146,7 @@ def set_ryro_theme():
         /* Styling tambahan untuk konten Debug di sidebar */
         [data-testid="stSidebar"] code {
             background: rgba(0, 0, 0, 0.3) !important;
-            color: #00ff00 !important; /* Warna terminal hijau klasik */
+            color: #00ff00 !important; 
             border-radius: 5px;
             padding: 10px;
         }
@@ -181,11 +156,11 @@ def set_ryro_theme():
         }
                 
         .led {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        display: inline-block;
-        margin-right: 8px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
         }
         .led-blue { background-color: #007bff; box-shadow: 0 0 8px #007bff; }
         .led-orange { background-color: #fd7e14; box-shadow: 0 0 8px #fd7e14; }
@@ -217,6 +192,111 @@ def set_ryro_theme():
         div[data-baseweb="select"] > div:focus-within {
             border-color: #007bff !important;
             box-shadow: 0 0 0 1px #007bff !important;
+        }
+                
+                /* 1. Gaya Cyberpunk: Sudut terpotong (Chamfered Edges) */
+        div[data-testid="stExpander"] details summary, div[data-testid="stPopover"] button {
+            background: linear-gradient(90deg, #151522 0%, #1e1e30 100%) !important;
+            border: none !important;
+            /* Teknik memotong bentuk kotak menjadi poligon kustom */
+            clip-path: polygon(15% 0, 100% 0, 100% 75%, 85% 100%, 0 100%, 0 25%) !important;
+            padding: 12px 20px !important;
+            border-left: 4px solid #00a8ff !important; /* Aksen neon di kiri */
+            color: #00a8ff !important;
+            font-weight: bold !important;
+            letter-spacing: 1px !important;
+            transition: all 0.3s ease-in-out !important;
+        }
+
+        /* Efek hover Cyberpunk */
+        div[data-testid="stExpander"] details summary:hover, div[data-testid="stPopover"] button:hover {
+            background: #00a8ff !important;
+            color: #151522 !important;
+            border-left: 4px solid #ffffff !important;
+            transform: scale(1.02) !important;
+        }
+                
+                /* --- AREA DALAM UPLOADER (PILIH GAMBAR) --- */
+
+        /* 1. Modifikasi area kotak utama (Dropzone) */
+        div[data-testid="stFileUploader"] section {
+            background-color: #12121c !important; /* Background super gelap */
+            border: 1px solid #2a2a3d !important;
+            border-left: 4px solid #00a8ff !important; /* Aksen garis neon biru di kiri nyamain tombol luar */
+            border-radius: 4px !important; /* Sudut lebih tajam, nggak membulat pasaran */
+            padding: 20px !important;
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5) !important; /* Efek kedalaman (masuk ke dalam) */
+            transition: all 0.3s ease !important;
+        }
+
+        /* Efek nyala pas kursor masuk atau lagi drag file ke area dropzone */
+        div[data-testid="stFileUploader"] section:hover {
+            border-color: #00a8ff !important;
+            background-color: #171724 !important;
+            box-shadow: inset 0 0 10px rgba(0, 168, 255, 0.1) !important;
+        }
+
+        /* 2. Modifikasi tombol "Upload" (Browse files) di bagian dalam */
+        div[data-testid="stFileUploader"] button {
+            background: transparent !important;
+            border: 1px solid #00a8ff !important;
+            color: #00a8ff !important;
+            border-radius: 0px !important; /* Kotak kaku ala interface Sci-Fi */
+            padding: 5px 20px !important;
+            font-weight: bold !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1.5px !important;
+            transition: all 0.2s ease !important;
+        }
+
+        /* Efek nyala pas tombol Upload internal disorot */
+        div[data-testid="stFileUploader"] button:hover {
+            background: #00a8ff !important;
+            color: #000000 !important;
+            box-shadow: 0 0 12px rgba(0, 168, 255, 0.6) !important;
+        }
+
+        /* 3. Modifikasi teks limit (200MB per file...) biar kayak teks terminal */
+        div[data-testid="stFileUploader"] small {
+            color: #5c637a !important;
+            font-family: 'Courier New', Courier, monospace !important;
+            font-size: 0.8rem !important;
+            letter-spacing: 0.5px !important;
+            margin-top: 10px !important;
+        }
+
+        /* 4. Ubah warna icon awan bawaan Streamlit (opsional biar senada) */
+        div[data-testid="stFileUploader"] svg {
+            color: #00a8ff !important;
+        }
+                
+                /* Bikin posisi Popover melayang (Fixed) di pojok kanan bawah */
+        div[data-testid="stPopover"] {
+            position: fixed !important;
+            bottom: 30px !important;
+            right: 30px !important;
+            z-index: 1000 !important;
+        }
+
+        /* Kustomisasi bentuk tombolnya biar bulat, minimalis, & nyatu sama tema gelap Ryro */
+        div[data-testid="stPopover"] button {
+            border-radius: 50% !important;
+            width: 55px !important;
+            height: 55px !important;
+            padding: 0 !important;
+            background-color: #1E1E1E !important; /* Warna dasar gelap */
+            border: 2px solid #00a8ff !important; /* Garis biru khas Ryro AI lu */
+            color: white !important;
+            font-size: 24px !important; /* Ukuran icon gear */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5) !important;
+            transition: all 0.3s ease-in-out !important;
+        }
+
+        /* Efek pas disorot mouse (Hover) */
+        div[data-testid="stPopover"] button:hover {
+            background-color: #00a8ff !important;
+            box-shadow: 0 0 15px rgba(0, 168, 255, 0.7) !important;
+            transform: scale(1.1) !important;
         }
         </style>
         
